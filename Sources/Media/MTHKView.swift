@@ -84,6 +84,16 @@ public class MTHKView: MTKView {
 }
 
 extension MTHKView: NetStreamDrawable {
+    public func attachStream(_ stream: NetStream?) {
+        if Thread.isMainThread {
+            currentStream = stream
+        } else {
+            DispatchQueue.main.async {
+                self.currentStream = stream
+            }
+        }
+    }
+    
     // MARK: NetStreamDrawable
     public func attachStream(_ stream: NetStream?, function: @escaping(CVPixelBuffer) -> Void) {
         self.predictionFunc = function
