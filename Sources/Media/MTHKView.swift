@@ -6,6 +6,9 @@ import MetalKit
  */
 public class MTHKView: MTKView {
     public var isMirrored = false
+    public var predictionFunc: ((CVPixelBuffer) -> Void)? = nil
+    public var isWorking = false
+    
     /// Specifies how the video is displayed within a player layer’s bounds.
     public var videoGravity: AVLayerVideoGravity = .resizeAspect
 
@@ -56,11 +59,34 @@ public class MTHKView: MTKView {
         framebufferOnly = false
         enableSetNeedsDisplay = true
     }
+    
+    public func aiTaskEnqueue(_ sampleBuffer: CMSampleBuffer?) {
+        DispatchQueue(label: "ai_task",
+            qos: .userInteractive,
+            attributes: [],
+            autoreleaseFrequency: .inherit,
+            target: nil).async
+        {
+            print("ai not working, running")
+            if self.predictionFunc != nil {
+                if self.currentSampleBuffer != nil {
+                        self.isWorking = true
+                        self.predictionFunc!(CMSampleBufferGetImageBuffer(self.currentSampleBuffer!)!)
+                        self.isWorking = false
+                }
+            } else {
+                print("predictionFunc undefined")
+            }
+            
+        }
+        
+    }
 }
 
 extension MTHKView: NetStreamDrawable {
     // MARK: NetStreamDrawable
-    public func attachStream(_ stream: NetStream?) {
+    public func attachStream(_ stream: NetStream?, function: @escaping(CVPixelBuffer) -> Void) {
+        self.predictionFunc = function
         if Thread.isMainThread {
             currentStream = stream
         } else {
@@ -73,6 +99,11 @@ extension MTHKView: NetStreamDrawable {
     public func enqueue(_ sampleBuffer: CMSampleBuffer?) {
         if Thread.isMainThread {
             currentSampleBuffer = sampleBuffer
+            if !self.isWorking {
+                self.aiTaskEnqueue(sampleBuffer)
+            } else {
+                print("ai working, not enqueue")
+            }
             #if os(macOS)
             self.needsDisplay = true
             #else
