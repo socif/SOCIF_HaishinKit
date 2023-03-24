@@ -445,7 +445,7 @@
 		29EA87E51E79A2780043A5F8 /* CMAudioFormatDescription+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMAudioFormatDescription+Extension.swift"; sourceTree = "<group>"; };
 		29EA87E91E79A3B70043A5F8 /* CMBlockBuffer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMBlockBuffer+Extension.swift"; sourceTree = "<group>"; };
 		29EA87EC1E79A3E30043A5F8 /* CVPixelBuffer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extension.swift"; sourceTree = "<group>"; };
-		29F04FF21F3388B000172706 /* HaishinKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HaishinKit.podspec; sourceTree = "<group>"; };
+		29F04FF21F3388B000172706 /* SOCIF_HaishinKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SOCIF_HaishinKit.podspec; sourceTree = "<group>"; };
 		29F39BE72335F8010055F9BB /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		29F6F4841DFB83E200920A3A /* RTMPHandshake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMPHandshake.swift; sourceTree = "<group>"; };
 		2EC97B6D27880FF400D8BE32 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -703,7 +703,7 @@
 				2981E1301D646E3F00E8F7CA /* Cartfile */,
 				2927A2991E7ED2D70044AF91 /* LICENSE.md */,
 				2997BDD31D50D31B000AF900 /* README.md */,
-				29F04FF21F3388B000172706 /* HaishinKit.podspec */,
+				29F04FF21F3388B000172706 /* SOCIF_HaishinKit.podspec */,
 				29F39BE72335F8010055F9BB /* Package.swift */,
 				2968973E1CDB01920074D5F0 /* Examples */,
 				0ACC00B98D6DB33B5BE87B87 /* Frameworks */,
@@ -1245,7 +1245,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2945CBB71B4BE66000104112 /* Build configuration list for PBXProject "HaishinKit" */;
+			buildConfigurationList = 2945CBB71B4BE66000104112 /* Build configuration list for PBXProject "SOCIF_HaishinKit" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -2198,7 +2198,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2945CBB71B4BE66000104112 /* Build configuration list for PBXProject "HaishinKit" */ = {
+		2945CBB71B4BE66000104112 /* Build configuration list for PBXProject "SOCIF_HaishinKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2945CBD11B4BE66000104112 /* Debug */,

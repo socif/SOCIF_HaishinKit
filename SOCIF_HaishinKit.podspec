@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   HaishinKit. Camera and Microphone streaming library via RTMP, HLS for iOS, macOS and tvOS.
   DESC
 
-  s.homepage     = "https://github.com/socif/SOCIF_HaishinKit.swift"
+  s.homepage     = "https://github.com/socif/SOCIF_HaishinKit"
   s.license      = "New BSD"
   s.author       = { "seeseesky" => "ccskytpk@gmail.com" }
   s.authors      = { "seeseesky" => "ccskytpk@gmail.com" }
