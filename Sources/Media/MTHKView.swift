@@ -6,6 +6,9 @@ import MetalKit
  */
 public class MTHKView: MTKView {
     public var isMirrored = false
+    
+    public var aiEnqueueFunc: ((CVPixelBuffer) -> Void)? = nil
+    
     /// Specifies how the video is displayed within a player layer’s bounds.
     public var videoGravity: AVLayerVideoGravity = .resizeAspect
 
@@ -14,7 +17,7 @@ public class MTHKView: MTKView {
     }
 
     #if !os(tvOS)
-    public var videoOrientation: AVCaptureVideoOrientation = .portrait
+    public var videoOrientation: AVCaptureVideoOrientation = .landscapeRight
     #endif
 
     private var currentSampleBuffer: CMSampleBuffer?
@@ -69,10 +72,26 @@ extension MTHKView: NetStreamDrawable {
             }
         }
     }
+    
+    public func attachStream(_ stream: NetStream?, function: @escaping(CVPixelBuffer) -> Void) {
+        self.aiEnqueueFunc = function
+        if Thread.isMainThread {
+            currentStream = stream
+        } else {
+            DispatchQueue.main.async {
+                self.currentStream = stream
+            }
+        }
+    }
 
     public func enqueue(_ sampleBuffer: CMSampleBuffer?) {
         if Thread.isMainThread {
             currentSampleBuffer = sampleBuffer
+            if self.aiEnqueueFunc != nil {
+                if sampleBuffer != nil {
+                    self.aiEnqueueFunc!(CMSampleBufferGetImageBuffer(sampleBuffer!)!)
+                }
+            }
             #if os(macOS)
             self.needsDisplay = true
             #else
