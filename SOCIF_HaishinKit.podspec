@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name          = "SOCIF_HaishinKit"
-  s.version       = "1.4.4b"
+  s.version       = "2.4.4"
   s.summary       = "B"
   s.swift_version = "5.7"
 
