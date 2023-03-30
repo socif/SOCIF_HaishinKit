@@ -78,7 +78,7 @@ final class IOVideoUnit: NSObject, IOUnit {
         }
     }
 
-    var videoOrientation: AVCaptureVideoOrientation = .portrait {
+    var videoOrientation: AVCaptureVideoOrientation = .landscapeRight {
         didSet {
             guard videoOrientation != oldValue else {
                 return
