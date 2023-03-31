@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
 
   s.name          = "SOCIF_HaishinKit"
-  s.version       = "2.4.4"
-  s.summary       = "B"
+  s.version       = "3.4.4"
+  s.summary       = "C"
   s.swift_version = "5.7"
 
   s.description  = <<-DESC
-  B
+  C
   DESC
 
   s.homepage     = "https://github.com/socif/SOCIF_HaishinKit"
