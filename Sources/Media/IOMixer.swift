@@ -178,9 +178,9 @@ public class IOMixer {
             break
         case .decoding:
             switch sampleBuffer.formatDescription?.mediaType {
-            case kCMMediaType_Audio:
+            case CMFormatDescription.MediaType.audio:
                 audioIO.codec.appendSampleBuffer(sampleBuffer)
-            case kCMMediaType_Video:
+            case CMFormatDescription.MediaType.video:
                 videoIO.codec.formatDescription = sampleBuffer.formatDescription
                 mediaLink.enqueueVideo(sampleBuffer)
             default:
